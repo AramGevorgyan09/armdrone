@@ -332,7 +332,7 @@ export default {
 
 .logo img {
     position: relative;
-    width: 60%;
+    width: 40%;
     user-select: none;
 }
 
@@ -442,8 +442,8 @@ nav #videoLessons, nav #about {
 }
 
 .language img {
-    width: var( --small-font-size );
-    left: var( --small-distance );
+    width: var( --medium-font-size );
+    left: var( --medium-distance );
 }
 
 #openedImage {

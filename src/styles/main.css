@@ -91,11 +91,11 @@ body {
 
 .container-info {
     text-align: left;
-    text-indent: 30px;
+    margin-right: var( --large-distance );
 }
 
 .container ul {
-    margin-left: 60px;
+    margin-left: 30px;
     text-indent: 0;
 }
 
@@ -196,8 +196,8 @@ body {
 }
 
 .custom-select-option {
-    padding: var( --small-distance );
-    font-size: var( --small-font-size );
+    padding: var( --medium-distance );
+    font-size: var( --medium-font-size );
 }
 
 .custom-select-option:hover {
