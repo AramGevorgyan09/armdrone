@@ -23,9 +23,9 @@ export default {
 
 <style scoped>
 .follow {
-    width: 240px;
+    width: min-content;
     display: grid;
-    gap: var( --medium-distance );
+    gap: 20px;
     grid-template-columns: repeat( 4, 1fr );
 }
 
@@ -36,7 +36,7 @@ export default {
 }
 
 .follow img {
-    width: 40px;
+    width: 30px;
     cursor: pointer;
 }
 

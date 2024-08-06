@@ -539,7 +539,7 @@ footer {
 }
 
 .partners img {
-    width: 250px;
+    width: 160px;
     transition: var( --long-transition );
 }
 
@@ -548,7 +548,7 @@ footer {
 }
 
 .partners .image-title {
-    font-size: var( --small-font-size );
+    font-size: var( --medium-font-size );
     margin-top: var( --medium-distance );
 }
 
