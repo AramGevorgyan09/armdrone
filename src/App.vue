@@ -272,10 +272,14 @@ export default {
                         case '1':
                             document.getElementById('left').style.opacity = 0.5;
                             document.getElementById('left').style.cursor = 'no-drop';
+                            document.getElementById('right').style.opacity = 1;
+                            document.getElementById('right').style.cursor = 'pointer';
                             break;
                         case '8':
                             document.getElementById('right').style.opacity = 0.5;
                             document.getElementById('right').style.cursor = 'no-drop';
+                            document.getElementById('left').style.opacity = 1;
+                            document.getElementById('left').style.cursor = 'pointer';
                             break;
                         default:
                             document.getElementById('left').style.opacity = 1;
@@ -290,10 +294,14 @@ export default {
                         case '1':
                             document.getElementById('left').style.opacity = 0.5;
                             document.getElementById('left').style.cursor = 'no-drop';
+                            document.getElementById('right').style.opacity = 1;
+                            document.getElementById('right').style.cursor = 'pointer';
                             break;
                         case '3':
                             document.getElementById('right').style.opacity = 0.5;
                             document.getElementById('right').style.cursor = 'no-drop';
+                            document.getElementById('left').style.opacity = 1;
+                            document.getElementById('left').style.cursor = 'pointer';
                             break;
                         default:
                             document.getElementById('left').style.opacity = 1;
