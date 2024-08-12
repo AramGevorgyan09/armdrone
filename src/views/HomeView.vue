@@ -2,7 +2,7 @@
     <div class="home">
         <div class="container">
             <p class="container-title">{{ $t('news') }}</p>
-            <div class="images">
+            <div class="container-images">
                 <img v-for="( image, index ) in news" :key="index" :src="image.url" :alt="image.alt" 
                     class="container-image" @click="openImage( image.url, image.alt )">
             </div>
@@ -19,14 +19,8 @@
 export default {
     name: 'HomeView',
     props: {
-        openImage: {
-            type: Function,
-            required: true
-        },
-        news: {
-            type: Array,
-            required: true
-        }
+        openImage: Function,
+        news: Array
     }
 }
 </script>

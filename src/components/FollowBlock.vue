@@ -36,12 +36,12 @@ export default {
 }
 
 .follow img {
-    width: 30px;
+    width: 35px;
     cursor: pointer;
 }
 
 .follow img:hover {
-    transform: scale( 1.3 );
+    scale: 1.2;
 }
 
 @media screen and ( max-width: 700px ) {

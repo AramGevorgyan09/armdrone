@@ -1,148 +1,110 @@
 @media screen and ( max-width: 1260px ) {
-    #header {
-        grid-template-columns: 1fr 3fr 1fr;
-    }
-
     .container {
         margin: var( --large-distance );
-    }
-
-    .container-title {
-        font-size: 60px;
-    }
-
-    .medium {
-        font-size: 40px;
     }
 }
 
 @media screen and ( max-width: 1100px ) {
-    :root {
-        --medium-distance: 14px;
-        --small-distance: 8px;
+    header {
+        display: block;
     }
 
     #languageSelect {
         position: absolute;
         top: 50%;
         transform: translate( 0, -50% );
-        right: var( --medium-distance );
+        right: var(--large-distance);
+    }
+
+    #bars {
+        margin-left: var(--medium-distance);
     }
 
     .container-image {
-        width: 170px;
+        width: 180px;
     }
 }
 
-@media screen and ( max-width: 1000px ) {
-    nav {
-        border: 0;
-        padding: var( --small-distance );
+@media screen and ( max-width: 950px ) {
+    :root {
+        --large-font-size: 50px;
     }
 
     .container-image {
-        width: 130px;
-    }
-}
-
-@media screen and ( max-width: 900px ) {
-    #logo img {
-        width: 100%;
+        width: 150px;
     }
 
-    .container-title {
-        font-size: 40px;
-    }
-
-    .medium {
-        font-size: var( --medium-font-size );
-    }
-
-    .container-info, .container-info ul li, .link {
-        font-size: var( --small-font-size );
-    }
-
-    .container-info {
-        text-indent: 15px;
-    }
-
-    .container ul {
-        margin-left: 30px;
-    }
-
-    #openedImage .image {
-        width: 55%;
+    #openedImage .opened-image {
+        width: 48%;
         height: auto;
     }
 }
 
-@media screen and ( max-width: 700px ) {
+@media screen and ( max-width: 850px ) {
     :root {
-        --large-distance: 30px;
-    }
-
-    .container-title {
-        font-size: var( --large-font-size );
-    }
-
-    .container-info, .container-info ul li, .link {
-        font-size: 12px;
-    }
-
-    #partners img {
-        width: 200px;
-    }
-
-    .button {
-        width: 200px;
-        height: 40px;
-        font-size: var( --medium-font-size );
-    }
-
-    .medium {
-        font-size: 16px;
+        --large-font-size: 40px;
     }
 
     .container-image {
-        width: 90px;
+        width: 120px;
+    }
+}
+
+@media screen and ( max-width: 700px ) {
+
+    .container-images {
+        grid-template-columns: repeat( 2, 1fr );
+        gap: var( --small-distance );
     }
 }
 
 @media screen and ( max-width: 600px ) {
+    :root {
+        --medium-font-size: 20px;
+        --large-font-size: 30px;
+    }
+
+    .logo-frame {
+        height: 150px;
+    }
+
+    .container-image {
+        width: 100px;
+    }
+
+    #openedImage {
+        height: 70%;
+    }
+
     .partners {
-        gap: 50px;
+        gap: 0;
     }
 
-    #partners img {
-        width: 130px;
+    .partners img {
+        width: 100px;
     }
 
-    #partners .image-title {
-        font-size: 10px;
-    }
-
-    .images {
-        grid-template-columns: repeat( 3, 1fr );
-        justify-items: center;
-    }
-
-    #openedImage .image {
-        width: 60%;
+    .partners .image-title {
+        font-size: 9px;
     }
 }
 
 @media screen and ( max-width: 500px ) {
-    #partners {
-        gap: 0px;
-    }
-
-    .container-image {
-        width: 70px;
+    #openedImage .opened-image {
+        width: 50%;
     }
 }
 
 @media screen and ( max-width: 400px ) {
-    #partners img {
-        width: 100px;
+    :root {
+        --large-font-size: 20px;
+    }
+
+    * {
+        font-size: 12px;
+    }
+
+    .logo-frame {
+        height: 120px;
     }
 }

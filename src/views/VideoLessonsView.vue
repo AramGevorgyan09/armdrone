@@ -46,7 +46,7 @@ export default {
     margin-left: 50%;
     transform: translate( -50% );
     width: fit-content;
-    border: var( --thin-border );
+    border: var( --thick-border );
     border-radius: var( --main-border-radius );
     padding: var( --medium-distance );
     display: grid;
@@ -57,22 +57,22 @@ export default {
 .lessons-selection button {
     width: 50px;
     height: 50px;
-    background-color: var( --first-main-color );
-    color: var( --third-main-color );
-    font-size: var( --large-font-size );
+    background-color: var( --second-color );
+    color: var( --first-color );
+    font-size: var( --medium-font-size );
     border: var( --thin-border );
-    border-radius: var( --main-border-radius );
+    border-radius: 50%;
     cursor: pointer;
     user-select: none;
 }
 
 .lessons-selection button:hover {
-    background-color: var( --third-main-color );
-    color: var( --first-main-color );
+    transform: scale( 1.2 );
 }
 
 .lessons-selection .selected {
-    background-color: var( --third-main-color );
-    color: var( --first-main-color );
+    background-color: var( --first-color );
+    color: var( --third-color );
+    transform: scale( 1.2 );
 }
 </style>

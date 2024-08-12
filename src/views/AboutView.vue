@@ -2,7 +2,7 @@
     <div class="about">
         <div class="container">
             <p class="container-title">{{ $t('about') }}</p>
-            <div class="images">
+            <div class="container-images">
                 <img v-for="( image, index ) in about" :key="index" :src="image.url" :alt="image.alt" 
                     class="container-image" @click="openImage( image.url, image.alt )">
             </div>
@@ -26,14 +26,8 @@
 export default {
     name: 'AboutView',
     props: {
-        openImage: {
-            type: Function,
-            required: true
-        },
-        about: {
-            type: Array,
-            required: true
-        }
+        openImage: Function,
+        about: Array
     }
 }
 </script>

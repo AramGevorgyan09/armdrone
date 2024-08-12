@@ -1,23 +1,25 @@
 <template>
-    <div id="logo" class="logo">
-        <img src="./assets/images/armdrone.png" alt="ArmDrone Community" id="armdrone">
-    </div>
+    <section class="logo-frame">
+        <img src="./assets/images/armdrone.png" alt="ArmDrone" class="logo">
+    </section>
 
     <header id="header">
-        <div id="mobileMenu" class="mobile-menu" v-if="mobile == true" @click="toggle()">
+        <div v-if="mobile == true" id="bars" @click="toggle">
             <div class="bar1"></div>
             <div class="bar2"></div>
             <div class="bar3"></div>
-            <div id="menu" class="menu">
-                <router-link to="/" id="home" class="mobile" @click="scrollToTop">{{ $t('home') }}</router-link>
-                <router-link to="/videolessons" id="videoLessons" class="mobile" @click="scrollToTop">{{ $t('videoLessons') }}</router-link>
-                <router-link to="/about" id="about" class="mobile" @click="scrollToTop">{{ $t('about') }}</router-link>
-                <FollowBlock />
-            </div>
         </div>
 
-        <FollowBlock v-if="mobile == false" />
-        <nav v-if="mobile == false">
+        <nav v-if="mobile == true" id="mobileMenu" @click="toggle">
+            <router-link to="/" id="home" @click="scrollToTop">{{ $t('home') }}</router-link>
+            <router-link to="/videolessons" id="videoLessons" @click="scrollToTop">{{ $t('videoLessons') }}</router-link>
+            <router-link to="/about" id="about" @click="scrollToTop">{{ $t('about') }}</router-link>
+            <FollowBlock />
+        </nav>
+
+        <FollowBlock v-if="mobile != true" />
+
+        <nav v-if="mobile != true" id="desktopMenu">
             <router-link to="/" id="home" @click="scrollToTop">{{ $t('home') }}</router-link>
             <router-link to="/videolessons" id="videoLessons" @click="scrollToTop">{{ $t('videoLessons') }}</router-link>
             <router-link to="/about" id="about" @click="scrollToTop">{{ $t('about') }}</router-link>
@@ -28,19 +30,19 @@
                 <span id="selectedLanguage">
                     <img src="./assets/images/armenia.png" alt="Armenia">Հայերեն
                 </span>
-                <img src="./assets/images/arrow1.png" alt="Arrow" class="arrow">
+                <img src="./assets/images/arrow1.png" alt="Arrow" class="custom-select-arrow">
             </div>
             <div id="languageOptions" class="custom-select-options">
-                <div @click="choose( 'l1', 'languageOptions', 'selectedLanguage', 'language' ); changeLanguage('am')" 
-                    class="custom-select-option language selected-option" id="l1">
+                <div id="l1" class="custom-select-option language selected-option" 
+                    @click="chooseOption( 'l1', 'languageOptions', 'selectedLanguage', 'language' ); changeLanguage('am')">
                     <img src="./assets/images/armenia.png" alt="Armenia">Հայերեն
                 </div>
-                <div @click="choose( 'l2', 'languageOptions', 'selectedLanguage', 'language' ); changeLanguage('ru')" 
-                    class="custom-select-option language" id="l2">
+                <div id="l2" class="custom-select-option language" 
+                    @click="chooseOption( 'l2', 'languageOptions', 'selectedLanguage', 'language' ); changeLanguage('ru')">
                     <img src="./assets/images/russia.png" alt="Russia">Русский
                 </div>
-                <div @click="choose( 'l3', 'languageOptions', 'selectedLanguage', 'language' ); changeLanguage('en')" 
-                    class="custom-select-option language" id="l3">
+                <div id="l3" class="custom-select-option language" 
+                    @click="chooseOption( 'l3', 'languageOptions', 'selectedLanguage', 'language' ); changeLanguage('en')">
                     <img src="./assets/images/uk.png" alt="United Kingdom">English
                 </div>
             </div>
@@ -50,19 +52,23 @@
     <router-view :openImage="openImage" :news="news" :about="about" />
     
     <div id="openedImage">
-        <img :src="openedImageURL" :alt="openedImageAlt" class="image">
-        <img src="@/assets/images/close.png" alt="Close" class="close" @click="closeImage">
+        <img :src="openedImageURL" :alt="openedImageAlt" class="opened-image">
+        <img src="@/assets/images/close.png" alt="Close" id="close" 
+            @click="closeImage">
         <img src="@/assets/images/arrow1.png" alt="Left" id="left" 
             @click=" this.openedImageAlt.slice( 0, -1 ) == 'News' ? changeImage( 'news', 'left' ) : changeImage( 'about', 'left' ) ">
         <img src="@/assets/images/arrow1.png" alt="Right" id="right" 
             @click=" this.openedImageAlt.slice( 0, -1 ) == 'News' ? changeImage( 'news', 'right' ) : changeImage( 'about', 'right' ) ">
     </div>
 
-    <button id="scrollToTop" @click="scrollToTop"><img src="./assets/images/arrow2.png" alt="Arrow"></button>
+    <button id="scrollToTop" @click="scrollToTop">
+        <img src="./assets/images/arrow2.png" alt="Arrow">
+    </button>
 
     <footer>
         <p class="footer-info-title">{{ $t('partners') }}</p>
-        <div id="partners" class="partners">
+
+        <section id="partners" class="partners">
             <span class="image-frame">
                 <img src="@/assets/images/partners/ysu.png" alt="YSU">
                 <p class="image-title">{{ $t('ysu') }}</p>
@@ -71,7 +77,7 @@
                 <img src="@/assets/images/partners/physmath.png" alt="PhysMath">
                 <p class="image-title">{{ $t('physmath') }}</p>
             </span>
-        </div>
+        </section>
 
         <p class="end-text">&copy; 2024. ArmDrone Community</p>
     </footer>
@@ -156,10 +162,10 @@ export default {
     },
     methods: {
         toggle() {
-            document.getElementById('mobileMenu').classList.toggle("change");
-            const menu = document.getElementById('menu');
-            if ( menu.style.left < '0' ) {
-                menu.style.left = '0';
+            document.getElementById('bars').classList.toggle("change");
+            const menu = document.getElementById('mobileMenu');
+            if ( menu.style.left < '0px' ) {
+                menu.style.left = '0px';
             } else {
                 menu.style.left = '-100%';
             }
@@ -198,7 +204,7 @@ export default {
                 }, 300 );
             });
         },
-        choose( optionId, optionsId, buttonTextId, optionClass ) {
+        chooseOption( optionId, optionsId, buttonTextId, optionClass ) {
             const element = document.getElementById( optionId );
             document.getElementById( buttonTextId ).innerHTML = element.innerHTML;
 
@@ -323,17 +329,17 @@ export default {
 </script>
 
 <style>
-.logo {
+.logo-frame {
     position: relative;
-    top: 0;
-    left: 0;
-    text-align: center;
+    width: 100%;
+    height: 200px;
 }
 
-.logo img {
-    position: relative;
-    width: 40%;
-    user-select: none;
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translate( -50% );
+    height: 100%;
 }
 
 header {
@@ -341,45 +347,44 @@ header {
     position: sticky;
     top: 0;
     background-color: #030a14dd;
-    padding: var( --medium-distance );
-    border-bottom: var( --thin-border );
+    padding: var(--medium-distance);
+    border-top: var(--thin-border);
+    border-bottom: var(--thin-border);
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
     justify-items: center;
 }
 
-nav .location-now, #menu .location-now {
-    border-bottom-color: var( --first-main-color );
-}
-
-nav {
-    padding: 0 var( --large-distance );
-    border-right: var( --thin-border );
-    border-left: var( --thin-border );
-}
-
-nav #videoLessons, nav #about {
-    margin-left: var( --large-distance );
-}
-
-.mobile-menu .menu .mobile, nav a {
-    font-size: var( --large-font-size );
-    text-decoration: none;
-    border-bottom: var( --thin-transparent-border );
+nav a {
+    font-size: 20px;
+    border-bottom: var(--thin-transparent-border);
     cursor: pointer;
     user-select: none;
 }
 
-.mobile-menu .menu .mobile:hover, nav a:hover {
-    border-bottom-color: var( --first-main-color );
+nav a:hover {
+    border-bottom-color: var(--first-color);
 }
 
-.bar1, .bar2, .bar3 {
+#desktopMenu {
+    padding: 0 var(--large-distance);
+    border-right: var(--thin-border);
+    border-left: var(--thin-border);
+}
+
+#desktopMenu #videoLessons,
+#desktopMenu #about {
+    margin-left: var(--large-distance);
+}
+
+.bar1,
+.bar2,
+.bar3 {
     width: 40px;
     height: 4px;
-    background-color: var( --first-main-color );
-    margin: 10px 0;
+    background-color: var(--first-color);
+    margin: var(--small-distance) 0;
 }
 
 .change .bar1 {
@@ -394,30 +399,23 @@ nav #videoLessons, nav #about {
     transform: translate( 0, -14px ) rotate( 45deg );
 }
 
-.mobile-menu .menu {
+#mobileMenu {
     position: absolute;
-    padding: 16px;
-    top: calc( 100% + 2px );
+    top: 100%;
     left: -100%;
-    background-color: var( --third-main-color );
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--third-color);
+    transition: var(--long-transition);
+    border: var(--thin-border);
     display: grid;
-    grid-template-rows: repeat( 4, 1fr );
-    gap: 16px;
-    transition: var( --long-transition );
-    border: var( --thick-border );
-    border-width: 0 2px 2px 2px;
-}
-
-.mobile-menu .menu .mobile {
-    justify-self: start;
+    justify-items: center;
+    gap: var(--small-distance);
+    padding: var(--small-distance) 0;
 }
 
 #languageSelect {
     text-align: center;
-}
-
-#languageSelect .custom-select-button, #languageSelect .custom-select-option {
-    width: 200px;
 }
 
 .language {
@@ -425,25 +423,19 @@ nav #videoLessons, nav #about {
     text-align: center;
 }
 
-#selectedLanguage img, .arrow, .language img {
+#selectedLanguage img,
+.custom-select-arrow,
+.language img {
     position: absolute;
     top: 50%;
+    left: var(--medium-distance);
     transform: translate( 0, -50% );
+    width: 14px;
 }
 
-#selectedLanguage img, .arrow {
-    width: var( --medium-font-size );
-    left: var( --medium-distance );
-}
-
-.arrow {
+.custom-select-arrow {
     left: unset;
-    right: var( --medium-distance );
-}
-
-.language img {
-    width: var( --medium-font-size );
-    left: var( --medium-distance );
+    right: var(--medium-distance);
 }
 
 #openedImage {
@@ -458,7 +450,7 @@ nav #videoLessons, nav #about {
     z-index: 100;
 }
 
-#openedImage .image {
+#openedImage .opened-image {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -466,32 +458,35 @@ nav #videoLessons, nav #about {
     height: 90%;
 }
 
-#openedImage .close {
+#openedImage #close {
     position: absolute;
-    top: var( --medium-distance );
-    right: var( --medium-distance );
+    top: var(--medium-distance);
+    right: var(--medium-distance);
     width: 40px;
     cursor: pointer;
 }
 
-#openedImage #left, #openedImage #right {
+#openedImage #left,
+#openedImage #right {
     position: absolute;
     top: calc( 50% - 25px );
     width: 50px;
     cursor: pointer;
 }
 
-#openedImage .close:hover, #openedImage #left:hover, #openedImage #right:hover {
+#openedImage #close:hover,
+#openedImage #left:hover,
+#openedImage #right:hover {
     scale: 1.2;
 }
 
 #openedImage #left {
-    left: var( --medium-distance );
+    left: var(--medium-distance);
     rotate: -90deg;
 }
 
 #openedImage #right {
-    right: var( --medium-distance );
+    right: var(--medium-distance);
     rotate: 90deg;
 }
 
@@ -499,14 +494,15 @@ nav #videoLessons, nav #about {
     padding: 0;
     position: fixed;
     right: -60px;
-    bottom: var( --medium-distance );
+    bottom: var(--medium-distance);
     width: 60px;
     height: 60px;
     background: transparent;
-    border: var( --thick-border );
+    border: var(--thick-border);
     border-radius: 50%;
     cursor: pointer;
     outline: none;
+    z-index: 100;
 }
 
 #scrollToTop img {
@@ -518,14 +514,14 @@ nav #videoLessons, nav #about {
 }
 
 footer {
-    padding: var( --large-distance );
-    background-color: var( --third-main-color );
+    padding: var(--large-distance);
+    background-color: var(--third-color);
     text-align: center;
 }
 
 .partners {
     width: max-content;
-    margin: var( --large-distance ) 50%;
+    margin: var(--large-distance) 50%;
     transform: translate( -50% );
     display: grid;
     grid-template-columns: repeat( 2, 1fr );
@@ -534,13 +530,13 @@ footer {
 }
 
 .partners .image-frame {
-    padding: var( --medium-distance );
+    padding: var(--medium-distance);
     width: min-content;
 }
 
 .partners img {
     width: 160px;
-    transition: var( --long-transition );
+    transition: var(--long-transition);
 }
 
 .partners img:hover {
@@ -548,16 +544,14 @@ footer {
 }
 
 .partners .image-title {
-    font-size: var( --medium-font-size );
-    margin-top: var( --medium-distance );
+    margin-top: var(--medium-distance);
 }
 
 .footer-info-title {
-    font-size: var( --large-font-size );
+    font-size: var(--medium-font-size);
 }
 
 .end-text {
-    color: var( --fourth-main-color );
-    font-size: var( --medium-font-size );
+    color: var(--fourth-color);
 }
 </style>

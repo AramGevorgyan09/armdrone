@@ -1,76 +1,97 @@
 :root {
-    --first-main-color: #fff;
-    --second-main-color: #07074d;
-    --third-main-color: #030a14;
-    --fourth-main-color: #999;
-    --small-font-size: 8px;
-    --medium-font-size: 12px;
-    --large-font-size: 20px;
-    --hyper-large-font-size: 50px;
-    --small-distance: 12px;
+    --first-color: white;
+    --second-color: #07074d;
+    --third-color: #030a14;
+    --fourth-color: grey;
+    --small-font-size: 10px;
+    --medium-font-size: 30px;
+    --large-font-size: 60px;
+    --small-distance: 10px;
     --medium-distance: 15px;
     --large-distance: 30px;
     --thin-transparent-border: 2px solid transparent;
-    --thin-border: 2px solid var( --first-main-color );
-    --thick-border: 4px solid var( --first-main-color );
+    --thin-border: 2px solid white;
+    --thick-border: 4px solid white;
     --main-border-radius: 20px;
-    --short-transition: 0.3s;
     --long-transition: 0.5s;
+    --main-button-width: 200px;
     --main-input-width: 300px;
     --main-input-height: 60px;
 }
 
 @font-face {
     font-family: 'Roboto-Regular';
-    src: url('../assets/fonts/Roboto-Regular.ttf');
+    src: url('@/assets/fonts/Roboto-Regular.ttf');
 }
 
 @font-face {
     font-family: 'Roboto-Bold';
-    src: url('../assets/fonts/Roboto-Bold.ttf');
+    src: url('@/assets/fonts/Roboto-Bold.ttf');
 }
 
 * {
     margin: 0;
     padding: 0;
-    color: var( --first-main-color );
+    color: var(--first-color);
     font-family: 'Roboto-Regular', sans-serif;
-    font-size: var( --medium-font-size );
+    font-size: 14px;
     letter-spacing: 1px;
+    line-height: 130%;
     box-sizing: border-box;
-    transition: var( --short-transition );
+    transition: 0.3s;
 }
 
 body {
-    position: relative;
-    background-color: var( --second-main-color );
+    background-color: var(--second-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+.location-now {
+    border-bottom-color: var(--first-color);
 }
 
 .container {
-    margin: var( --large-distance ) 100px;
-    padding: var( --large-distance );
-    border: var( --thick-border );
-    border-radius: var( --main-border-radius );
+    margin: var(--large-distance) 90px;
+    padding: var(--large-distance);
+    border: var(--thick-border);
+    border-radius: var(--main-border-radius);
     text-align: center;
 }
 
 .container-title {
     font-family: 'Roboto-Bold', sans-serif;
-    font-size: var( --hyper-large-font-size );
-    margin-bottom: var( --large-distance );
+    font-size: var(--large-font-size);
 }
 
-.medium {
-    font-size: var( --large-font-size );
+.container-title,
+.container-images,
+.video-frame {
+    margin-bottom: var(--large-distance);
 }
 
-.images, .video-frame {
-    margin-bottom: var( --large-distance );
+.container-images {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--medium-distance);
+    align-items: center;
+    width: min-content;
+    margin-left: 50%;
+    transform: translate(-50%);
+    padding: var(--medium-distance);
+    border: var(--thin-border);
+    border-radius: var(--main-border-radius);
 }
 
 .container-image {
-    position: relative;
     width: 230px;
+    cursor: pointer;
+}
+
+.container-image:hover {
+    scale: 1.1;
 }
 
 .video-frame {
@@ -86,27 +107,25 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: var( --main-border-radius );
+    border-radius: var(--main-border-radius);
 }
 
 .container-info {
     text-align: left;
-    margin-right: var( --large-distance );
+    margin-right: var(--large-distance);
 }
 
 .container ul {
-    margin-left: 30px;
-    text-indent: 0;
+    margin-left: var(--large-distance) ;
 }
 
 .highlighted {
-    border-bottom: var( --thin-border );
+    border-bottom: var(--thin-border);
 }
 
 .link {
     color: #00ffff;
-    border-bottom: var( --thin-transparent-border );
-    text-decoration: none;
+    border-bottom: var(--thin-transparent-border);
 }
 
 .link:hover {
@@ -114,62 +133,33 @@ body {
 }
 
 .button {
-    width: var( --main-input-width );
-    height: var( --main-input-height );
+    width: var(--main-input-width);
+    height: var(--main-input-height);
     background: transparent;
-    font-size: var( --large-font-size );
-    border: var( --thin-border );
-    border-radius: var( --main-border-radius );
-    margin-top: var( --large-distance );
+    font-size: var(--medium-font-size);
+    border: var(--thin-border);
+    border-radius: var(--main-border-radius);
+    margin-top: var(--large-distance);
     cursor: pointer;
     outline: none;
 }
 
 .button:hover {
-    background-color: var( --first-main-color );
-    color: var( --second-main-color );
+    background-color: var(--first-color);
+    color: var(--second-color);
 }
-
-/* .input {
-    width: var( --main-input-width );
-    height: var( --main-input-height );
-    background: transparent;
-    border: none;
-    border-bottom: var( --thin-border );
-    padding: var( --medium-distance );
-    outline: none;
-}
-
-.input:focus {
-    width: 350px;
-    border-bottom-color: #00ff00;
-}
-
-.textarea {
-    background: transparent;
-    padding: var( --medium-distance );
-    border: var( --thin-border );
-    border-radius: var( --main-border-radius );
-    outline: none;
-    resize: none;
-}
-
-.input::placeholder, .textarea::placeholder {
-    color: var( --fourth-main-color );
-    user-select: none;
-} */
 
 .custom-select {
     width: min-content;
     user-select: none;
 }
 
-.arrow {
+.custom-select-arrow {
     transform-origin: top;
-    transition: var( --long-transition );
+    transition: var(--long-transition);
 }
 
-.custom-select:hover .arrow {
+.custom-select:hover .custom-select-arrow {
     rotate: -180deg;
 }
 
@@ -178,57 +168,29 @@ body {
     opacity: 0;
     display: none;
     z-index: 10;
-    transition: var( --long-transition );
+    transition: var(--long-transition);
 }
 
-.custom-select-button, .custom-select-option {
-    width: var( --main-input-width );
-    background-color: var( --second-main-color );
-    border: var( --thin-border );
-    border-radius: var( --main-border-radius );
+.custom-select-button,
+.custom-select-option {
+    width: var(--main-button-width);
+    background-color: var(--second-color);
+    padding: var(--medium-distance);
+    border: var(--thin-border);
+    border-radius: var(--main-border-radius);
     cursor: pointer;
 }
 
 .custom-select-button {
-    padding: var( --medium-distance );
-    font-size: var( --medium-font-size );
     position: relative;
 }
 
-.custom-select-option {
-    padding: var( --medium-distance );
-    font-size: var( --medium-font-size );
-}
-
 .custom-select-option:hover {
-    background-color: var( --first-main-color );
-    color: var( --second-main-color );
+    background-color: var(--first-color);
+    color: var(--second-color);
 }
 
 .selected-option {
-    background-color: var( --first-main-color );
-    color: var( --second-main-color );
-}
-
-.images {
-    display: grid;
-    grid-template-columns: repeat( 4, 1fr );
-    gap: var( --medium-distance );
-    align-items: center;
-    justify-items: center;
-    width: min-content;
-    margin-left: 50%;
-    transform: translate( -50% );
-    border: var( --thin-border );
-    border-radius: var( --main-border-radius );
-    padding: var( --medium-distance );
-}
-
-.images img {
-    cursor: pointer;
-    transition: var( --short-transition );
-}
-
-.images img:hover {
-    scale: 1.1;
+    background-color: var(--first-color);
+    color: var(--second-color);
 }
